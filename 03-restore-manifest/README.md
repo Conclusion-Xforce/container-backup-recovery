@@ -8,20 +8,21 @@ Create a simple deployment, service and route based on the information below:
 * Container Port: `8080`
 * TLS termination: `edge`
 
-## Step 3 - Create a backup schedule in OADP
+## Step 2 - Create a backup schedule in OADP
 
 To make sure the backup is made frequently but does not impact the other tenants on the cluster use the following requirements:
 
 * Schedule: `*/5 * * * *`
-* includedNamespaces: `stephan`
+* includedNamespaces: `<INSERT NAMESPACE NAME>`
 * defaultVolumesToFsBackup: `false`
 
-## Step 4 - Delete the deployment
+## Step 3 - Delete the deployment
 
 To simulate a failure we will accidentally throw away the the deployment we just created.
 
-## Step 5 - Restore the deployment and check if everything works again
+## Step 4 - Restore the deployment 
 
+Restore the deploy and check if everything works again.
 
 ## Resources
 

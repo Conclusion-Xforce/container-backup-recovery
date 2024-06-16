@@ -1,0 +1,68 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: image-tool
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: image-tool
+  template:
+    metadata:
+      labels:
+        app: image-tool
+    spec:
+      volumes:
+        - name: imagetool
+          persistentVolumeClaim:
+            claimName: imagetool
+      containers:
+        - name: container
+          image: 'quay.io/redhattraining/image-tool:latest'
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: imagetool
+              mountPath: /var/storage/
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: imagetool
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: managed-csi
+  volumeMode: Filesystem
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: image-tool
+spec:
+  ports:
+    - protocol: TCP
+      port: 443
+      targetPort: 5000
+  type: ClusterIP
+  selector:
+    app: image-tool
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: image-tool
+spec:
+  to:
+    kind: Service
+    name: image-tool
+    weight: 100
+  port:
+    targetPort: 5000
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+
