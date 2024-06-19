@@ -2,7 +2,7 @@
 
 ## Step 1 - Create Deployment & Persistent Volume Claim
 
-Deploy the `./persistentvoluleclaim.yaml` en `./deployment.yaml`
+Deploy the `./persistentvolumeclaim.yaml` en `./deployment.yaml`
 
 ## Step 2 - Fill mysql database with data
 
