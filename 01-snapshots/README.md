@@ -49,7 +49,7 @@ Redeploy the deployment at `./deployment.yaml`. Change the persistent volume nam
 `mysql -h 127.0.0.1 -ptest -u root`
 
 * Test if the database is fill with data
-` SELECT * FROM persons; `
+` use prod; SELECT * FROM persons; `
 ## Resources
 * [Restore Snapshots | OpenShift Docs](https://docs.openshift.com/container-platform/4.15/storage/container_storage_interface/persistent-storage-csi-snapshots.html#persistent-storage-csi-snapshots-restore_persistent-storage-csi-snapshots)
 
