@@ -45,6 +45,9 @@ Redeploy the deployment at `./deployment.yaml`. Change the persistent volume nam
 * Start a shell in the pod
 ` oc rsh <pod name>`
 
+## Resources
+* [Restore Snapshots | OpenShift Docs] https://docs.openshift.com/container-platform/4.15/storage/container_storage_interface/persistent-storage-csi-snapshots.html#persistent-storage-csi-snapshots-restore_persistent-storage-csi-snapshots
+
 * Login to mysql
 `mysql -h 127.0.0.1 -ptest -u root`
 
